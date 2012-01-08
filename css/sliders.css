@@ -1,0 +1,156 @@
+/* -> Sliders */ 
+
+#sliders {
+   position: absolute;
+   color: #fff;
+   background-color: #222;
+   border: 1px solid #eee;
+   width: 60%;
+   margin: 0 20%;
+   opacity: 0;
+   padding: 2em;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #333;
+   border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+   background-color: #111;
+   font-size: 0.85em;
+   z-index: -1;
+}
+
+#sliders-block-top {
+   width: 50%;
+   margin: 0 25% 1em;
+   float: left;
+}
+
+#sliders-block-top label {
+   width: 20%;
+}
+
+#sliders-block-top input {
+   width: 70%;
+}
+
+#sliders-block-left {
+   clear: both;
+   width: 45%;
+   float: left;
+}
+
+#sliders-block-right {
+   width: 45%;
+   float: left;
+}
+
+#sliders-block-bottom {
+   clear: both;
+   width: 95%;
+   margin: 2em 5%;
+}
+
+#sliders .label-input {
+   overflow: auto;
+   clear: both;
+}
+
+#sliders .label-div {
+   clear: both;
+}
+
+#sliders .label-area {
+   float: left;
+   width: 33%;
+   margin-bottom: 2em;
+}
+
+#sliders .input-range {
+   width: 37%;
+   float: left;
+   text-align: left;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #0d0;
+   color: #0a0;
+   background-color: #000;
+   margin-bottom: 1em;
+   padding: 0.25em;
+   border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+
+#sliders .input-text {
+   width: 50%;
+   float: right;
+   text-align: left;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #0d0;
+   color: #0a0;
+   background-color: #000;
+   margin-bottom: 1em;
+}
+
+#sliders .range-value {
+   float: right;
+   width: 10%;
+   color: #aaf;
+   padding: 0.6em;
+   overflow: hidden;
+}
+
+#sliders label {
+   float: left;
+   text-align: right;
+   padding: 0.5em;
+   width: 40%;
+}
+
+#sliders textarea {
+   height: 10em;
+   width: 90%;
+   text-align: left;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #0d0;
+   color: #0a0;
+   background-color: #000;
+   padding: 0.25em;
+   border-top-left-radius: 1em; -moz-border-radius-topleft: 1em; -webkit-border-top-left-radius: 1em;
+   border-bottom-left-radius: 1em; -moz-border-radius-bottomleft: 1em; -webkit-border-bottom-left-radius: 1em;
+}
+
+#sliders .button {
+   font-size: 1.3em;
+   color: #999;
+   border-color: #555;
+   border-width: 2px;
+   padding: 0.5em;
+   margin: 0.5em 0.5em 0;
+   width: 30%;
+   border-radius: 5em; -moz-border-radius: 5em; -webkit-border-radius: 5em;
+   text-align: center;
+   border-style: solid;
+   background-color: #000;
+   margin-bottom: 1em;
+   padding: 0.25em 1em;
+   float: left;
+}
+
+#sliders .button:hover {
+   background-color: #333;
+}
+
+#sliders #save {
+   border-top-right-radius: 0; -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0;
+   border-bottom-right-radius: 0; -moz-border-radius-bottomright: 0; -webkit-border-bottom-right-radius: 0;
+}
+
+#sliders #load {
+   border-top-left-radius: 0; -moz-border-radius-topleft: 0; -webkit-border-top-left-radius: 0;
+   border-bottom-left-radius: 0; -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0;
+}
+
+#sliders #reset {
+   border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0;
+}
+

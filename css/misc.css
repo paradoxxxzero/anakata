@@ -1,0 +1,173 @@
+/* -> Misc */
+
+#fps {
+   position: absolute;
+   top: 1.2em;
+   right: 2em;
+   color: #0f0;
+   font-size: 0.7em;
+}
+
+#loading {
+   background-color: #222;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 31415
+}
+
+#loading mark {
+   position: absolute;
+   font-size: 2.5em;
+   font-family: monospace;
+   top: 45%;
+   left: 40%;
+   width: 20%;
+   height: 10%;
+}
+
+#info {
+   position: absolute;
+   text-align: center;
+   width: 50%;
+   bottom: 5%;
+   left: -50%;
+   font-size: 1.5em;
+   color: #555;
+}
+
+#nameover {
+   position: absolute;
+   text-align: center;
+   width: 50%;
+   top: 10px;
+   left: 25%;
+   font-size: 1em;
+   color: #ccc;
+}
+
+#nameoveredit {
+   position: absolute;
+   top: -40px;
+   text-align: center;
+   width: 50%;
+   left: 25%;
+   font-size: 1em;
+   color: #fff;
+   background-color: #111;
+   border: 1px solid #222;
+   font-family: monofur;
+}
+#helpBox {
+   width: 1018px;
+   height: 618px;
+   margin-top: -309px;
+   margin-left: -509px;
+}
+#helpDiv {
+   width: 1000px;
+   height: 600px;
+}
+#helpText {
+   width: 420px;
+}
+#helpText p {
+   text-indent: 2em;
+   text-align: justify;
+   color: #999;
+   font-size: 0.9em;
+}
+#helpText p:first-letter {
+   font-size: 1.3em;
+}
+#helpText mark {
+   font-size: 0.9em;
+   color: #fff;
+   margin: 1em;
+   display: block;
+}
+#helpDiv img {
+   margin: 0.5em;
+}
+#helpDiv div {
+   float: left;
+}
+#helpDiv header {
+   font-size: 1.75em;
+   text-align: center;
+   margin: 0.5em;
+   color: #fff;
+}
+#creditsBox {
+   width: 40em;
+   height: 18em;
+   margin-top: -9em;
+   margin-left: -20em;
+}
+#creditsDiv {
+   width: 39em;
+   height: 17em;
+}
+
+#creditsBox header {
+   display: block;
+   font-size: 1.5em;
+   padding: 0.5em  0.5em 1em;
+}
+
+#creditsBox mark {
+   font-size: 1.2em;
+   margin: 1em;
+}
+
+#creditsBox span {
+   position: absolute;
+   left: 8em;
+}
+#creditsBox label {
+   position: absolute;
+   left: 2em;
+}
+
+
+#paypalsubmit {
+   background-color: black;
+   background-color: black;
+   border: 1px solid #AAA;
+   border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+   color: #EEE;
+   font-family: Verdana, Arial, sans-serif;
+   font-size: 0.9em;
+   height: 2.2em;
+   position: absolute;
+   right: 1em;
+   bottom: 1em;
+}
+
+#animLoad {
+   position: absolute;
+   right: 0.5em;
+   bottom: 1em;
+   opacity: 0;
+}
+
+.al {
+   position: relative;
+   top: 30px;
+   float: left;
+   margin: 0.25em;
+   border-radius: 0.5em; -moz-border-radius: 0.5em; -webkit-border-radius: 0.5em;
+   height: 0.5em;
+   width: 0.5em;
+   text-align: center;
+   color: #000;
+   background-color: #39f;
+}
+#al1, #al2 {background-color: #22F;}
+#al3, #al4 {background-color: #22D;}
+#al5, #al6 {background-color: #11A;}
+#al7, #al8 {background-color: #118;}
+#al9, #al10 {background-color: #115;}
+

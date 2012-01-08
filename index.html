@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8">
+    <title>Ana / Kata - a 4D mesh drawer</title> 
+    <meta name="description" content="" />
+    <meta name="keywords" content="4d, tesseract, canvas, renderer, " />
+    <meta name="author" content="paradoxxxzero" />
+    <link type="text/css" rel="stylesheet" href="css/login.css" />
+    <link type="text/css" rel="stylesheet" href="css/misc.css" />
+    <link type="text/css" rel="stylesheet" href="css/nav.css" />
+    <link type="text/css" rel="stylesheet" href="css/simple.css" />
+    <link type="text/css" rel="stylesheet" href="css/sliders.css" />
+    <link type="text/css" rel="stylesheet" href="css/css.css" />
+    <script type="text/javascript" src="js/contrib/scripty2/prototype.js"></script>
+    <script type="text/javascript" src="js/contrib/scripty2/s2.js"></script>
+    <script type="text/javascript" src="js/globals.js"></script>
+    <script type="text/javascript" src="js/contrib.js"></script>
+    <script type="text/javascript" src="js/events.js"></script>
+    <script type="text/javascript" src="js/xhr.js"></script>
+    <script type="text/javascript" src="js/storage.js"></script>
+    <script type="text/javascript" src="js/info.js"></script>
+    <script type="text/javascript" src="js/widgets.js"></script>
+    <script type="text/javascript" src="js/maths.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/render.js"></script>
+    <script type="text/javascript" src="js/box.js"></script>
+    <script type="text/javascript" src="js/hotkeys.js"></script>
+  </head>
+  <body onload="anakata_render();">
+    <aside id="loading">
+      <mark>Loading...</mark>
+    </aside>
+    <header>
+      <nav id="nav">
+        <div id="listExpander">More &gt;</div>
+        <div id="listShrinker">&lt; Less</div>
+        <ul id="navList">
+          <li class="navListGroup">Settings widgets</li>
+          <li id="wcam" class="navListElement">Camera values</li>
+          <li id="wspeed" class="navListElement">Speed values</li>
+          <li id="wvertices" class="navListElement">Mesh vertices</li>
+          <li id="wedges" class="navListElement">Mesh edges</li>
+          <li id="wedgescolor" class="navListElement">Mesh edges color</li>
+          <li id="wdesc" class="navListElement">Mesh description</li>
+          <li id="wmisc" class="navListElement">Misc values</li>
+          <li class="navListGroup">Local storage</li>
+          <li id="esave" class="navListElement">Save mesh</li>
+          <li id="eload" class="navListElement">Load mesh</li>
+          <li id="ereset" class="navListElement">Clear storage</li>
+          <!-- <li class="navListGroup">Online storage</li> -->
+          <!-- <li id="elogin" class="navListElement">Login/Register</li> -->
+          <!-- <li id="echpasswd" class="navListElement">Change password</li> -->
+          <!-- <li id="epublish" class="navListElement">Publish</li> -->
+          <!-- <li id="emesheslist" class="navListElement">Meshes list</li> -->
+          <li class="navListGroup">Misc</li>
+          <li id="eall"  class="navListElement">Summary</li>
+          <li id="ehelp"   class="navListElement">Help</li>
+          <li id="ecredits" class="navListElement">Credits</li>
+        </ul>
+      </nav>
+    </header>
+    <section id="section">
+      <aside id="sliders">
+        <div id="sliders-block-top">
+          <div class="label-input">
+            <label>Name</label>
+            <input type="text" class="input-text" name="name" id="name" value="Tesseract" />
+          </div>
+        </div>
+        <div id="sliders-block-left">
+          <div class="label-input">
+            <label>Field of view</label>
+            <input type="range" class="input-range" name="fov" id="fov" min="0" max="2.5" step="0.1" />
+            <span id="sfov" class="range-value"></span>
+          </div>
+          <div class="label-input">
+            <label>Size of object</label>
+            <input type="range" class="input-range" name="scale" id="scale" min="0" max="500" step="10" value="0" />
+            <span id="sscale" class="range-value"></span>
+          </div>      
+          <div class="label-input">
+            <label>Line width</label>
+            <input type="range" class="input-range" name="lineWidth" id="lineWidth" min="0" max="5" step="0.1" value="0" />
+            <span id="slineWidth" class="range-value"></span>
+          </div>
+          <div class="label-div">
+            <label>Camera position</label>
+            <div class="label-input">
+              <label>x</label><input type="range" class="input-range" name="mX" id="mX" min="0" max="2500" step="10" value="0" />
+              <span id="smX" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>y</label><input type="range" class="input-range" name="mY" id="mY" min="0" max="2500" step="10" value="0" />
+              <span id="smY" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>z</label><input type="range" class="input-range" name="mZ" id="mZ" min="0" max="2500" step="10" value="0" />
+              <span id="smZ" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>w</label><input type="range" class="input-range" name="mW" id="mW" min="0" max="2500" step="10" value="0" />
+              <span id="smW" class="range-value"></span>
+            </div>
+          </div>
+        </div>
+        <div id="sliders-block-right">
+          <div class="label-div">
+            <label>Rotation step</label>  
+            <div class="label-input">
+              <label>xy</label><input type="range" class="input-range" name="xyStep" id="xyStep" min="-100" max="100" step="1" value="0" />
+              <span id="sxyStep" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>xz</label><input type="range" class="input-range" name="xzStep" id="xzStep" min="-100" max="100" step="1" value="0" />
+              <span id="sxzStep" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>xw</label><input type="range" class="input-range" name="xwStep" id="xwStep" min="-100" max="100" step="1" value="0" />
+              <span id="sxwStep" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>yz</label><input type="range" class="input-range" name="yzStep" id="yzStep" min="-100" max="100" step="1" value="0" />
+              <span id="syzStep" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>yw</label><input type="range" class="input-range" name="ywStep" id="ywStep" min="-100" max="100" step="1" value="0" />
+              <span id="sywStep" class="range-value"></span>
+            </div>
+            <div class="label-input">
+              <label>zw</label><input type="range" class="input-range" name="zwStep" id="zwStep" min="-100" max="100" step="1" value="0" />
+              <span id="szwStep" class="range-value"></span>
+            </div>
+          </div>
+        </div>
+        <div id="sliders-block-bottom">
+          <div class="label-area">
+            <label>Vertices</label>
+            <textarea name="vertices" class="dual" id="vertices">
+            </textarea>
+          </div>
+          <div class="label-area">
+            <label>Edges</label>
+            <textarea name="edges" class="dual"  id="edges">
+            </textarea>
+          </div>
+          <div class="label-area">
+            <label>Edges color</label>
+            <textarea name="edgesColor" class="dual"  id="edgesColor">
+            </textarea>
+          </div>
+          <div id="inputs">
+            <input type="button" class="button" id="save" value="Save mesh" />
+            <input type="button" class="button" id="reset" value="Reset" />
+            <input type="button" class="button" id="load" value="Load mesh" />
+          </div>
+        </div>
+      </aside>
+      <section id="wrap"> 
+        <canvas id="canvas" width="0" height="0">Sorry! But your browser doesn't support canvas! Do yourself and your computer a favor by installing a working and a fast browser, like <a href="http://www.google.com/chrome"> Google chrome </a> it will change your web life... If you want to know why take a look <a href="http://hallmedia.com/blog/2009/01/20/why-you-shouldnt-use-internet-explorer/">here</a></canvas>
+      </section>
+      <aside id="simple-cam-edit" class="simple">
+        <header>Camera position</header>
+        <div class="label-input">
+          <label>x</label><input type="range" class="input-range" name="mX_simple" id="mX_simple" min="0" max="2500" step="10" value="0" />
+          <span id="smX_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>y</label><input type="range" class="input-range" name="mY_simple" id="mY_simple" min="0" max="2500" step="10" value="0" />
+          <span id="smY_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>z</label><input type="range" class="input-range" name="mZ_simple" id="mZ_simple" min="0" max="2500" step="10" value="0" />
+          <span id="smZ_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>w</label><input type="range" class="input-range" name="mW_simple" id="mW_simple" min="0" max="2500" step="10" value="0" />
+          <span id="smW_simple" class="range-value"></span>
+        </div>
+      </aside>
+      <aside id="simple-speed-edit" class="simple">
+        <header>Rotation step</header>  
+        <div class="label-input">
+          <label>xy</label><input type="range" class="input-range" name="xyStep_simple" id="xyStep_simple" min="-100" max="100" step="1" value="0" />
+          <span id="sxyStep_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>xz</label><input type="range" class="input-range" name="xzStep_simple" id="xzStep_simple" min="-100" max="100" step="1" value="0" />
+          <span id="sxzStep_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>xw</label><input type="range" class="input-range" name="xwStep_simple" id="xwStep_simple" min="-100" max="100" step="1" value="0" />
+          <span id="sxwStep_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>yz</label><input type="range" class="input-range" name="yzStep_simple" id="yzStep_simple" min="-100" max="100" step="1" value="0" />
+          <span id="syzStep_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>yw</label><input type="range" class="input-range" name="ywStep_simple" id="ywStep_simple" min="-100" max="100" step="1" value="0" />
+          <span id="sywStep_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>zw</label><input type="range" class="input-range" name="zwStep_simple" id="zwStep_simple" min="-100" max="100" step="1" value="0" />
+          <span id="szwStep_simple" class="range-value"></span>
+        </div>
+      </aside>
+      <aside id="simple-vertices-edit" class="simple">
+        <header>Mesh vertices</header>
+        <div class="label-area">
+          <label>List :</label>
+          <textarea name="vertices_simple" class="dual" id="vertices_simple">
+          </textarea>
+        </div>
+      </aside>
+      <aside id="simple-edges-edit" class="simple">
+        <header>Mesh edges</header>
+        <div class="label-area">
+          <label>List :</label>
+          <textarea name="edges_simple" class="dual" id="edges_simple">
+          </textarea>
+        </div>
+      </aside>
+      <aside id="simple-edgescolor-edit" class="simple">
+        <header>Mesh edges color</header>
+        <div class="label-area">
+          <label>List :</label>
+          <textarea name="edgesColor_simple" class="dual" id="edgesColor_simple">
+          </textarea>
+        </div>
+      </aside>
+      <aside id="simple-misc-edit" class="simple">
+        <header>Miscellaneous</header>
+        <div class="label-input">
+          <label>Field of view</label>
+          <input type="range" class="input-range" name="fov_simple" id="fov_simple" min="0" max="2.5" step="0.1" />
+          <span id="sfov_simple" class="range-value"></span>
+        </div>
+        <div class="label-input">
+          <label>Size of object</label>
+          <input type="range" class="input-range" name="scale_simple" id="scale_simple" min="0" max="500" step="10" value="0" />
+          <span id="sscale_simple" class="range-value"></span>
+        </div>      
+        <div class="label-input">
+          <label>Line width</label>
+          <input type="range" class="input-range" name="lineWidth_simple" id="lineWidth_simple" min="0" max="5" step="0.1" value="0" />
+          <span id="slineWidth_simple" class="range-value"></span>
+        </div>
+      </aside>
+      <aside id="simple-desc-edit" class="simple">
+        <header>Mesh description</header>
+        <div class="label-area">
+          <label>Enter short summary here :</label>
+          <textarea name="description" id="description">
+          </textarea>
+        </div>
+      </aside>
+      <aside>
+        <mark id="nameover"></mark>
+        <input type="text" id="nameoveredit" />
+      </aside>
+      <aside>
+        <mark id="info">info</mark>
+      </aside>
+      <aside id="loginBox" class="box">
+        <div id="loginDiv" class="boxDiv">
+          <div>
+            <label class="label" for="login">Login:</label> <input type="text" class="login-input" name="login" id="login" />
+          </div>
+          <div>
+            <label class="label" for="passwd">Password:</label> <input type="password" class="login-input" name="passwd" id="passwd" />
+          </div>
+          <div>
+            <input type="button" id="create" class="login-button" value="Create" />
+            <input type="button" id="logmein" class="login-button"  value="Login" />
+          </div>
+        </div>
+      </aside>
+      <aside id="chpasswdBox" class="box">
+        <div id="chpasswdDiv" class="boxDiv">
+          <div>
+            <label class="label" for="oldpasswd">Old password:</label> <input type="password" class="login-input" name="oldpasswd" id="oldpasswd" />
+          </div>
+          <div>
+            <label class="label" for="newpasswd">New password:</label> <input type="password" class="login-input" name="newpasswd" id="newpasswd" />
+          </div>
+          <div>
+            <input type="button" id="chpasswd" class="login-button"  value="Change password" />
+          </div>
+        </div>
+      </aside>
+      <aside id="helpBox" class="box">
+        <div id="helpDiv" class="boxDiv">
+          <div>
+            <img src="halp.png" />
+          </div>
+          <div id="helpText">
+            <header>Help</header>
+            <p>
+              To build a mesh, first you will have to determine its vertices.
+              You have to compute them in a comma separated list, with square brackets.
+              If you want to define 3 points, enter a list like the following :
+            </p>
+            <mark>[x1, y1, z1, w1], [x2, y2, z2, w2], [x3, y3, z3, w3]</mark>
+            <p>
+              Once the vertices list is complete, you have to set which points are linked.
+              To do so use a comma separated list of edges. An edge is defined by a list of points. Points are represented by their indexes in the previous list.
+              So if you want to link the three previous points, enter the following edges list :
+            </p>
+            <mark>[1, 2], [2, 3], [3, 1]</mark>
+            <p>
+              But if you want to optimize a bit, you can replace the previous list with this faster one:
+            </p>
+            <mark>[1, 2, 3, 1]</mark>
+            <p>
+              By default all edges are white, but an optionnal setting enables you to change the edges' colors. 
+              If you want for example a red edge between 1 and 2, a blue between 2 and 3 and a green between 3 and 1, enter this list :
+            </p>
+            <mark>"red", "#FF0000", "#0f0"</mark>
+            <p>
+              The drawback of the optimized edges list is that you can assign only one color for an edge group.
+            </p>
+          </div>
+        </div>
+      </aside>
+      <aside id="creditsBox" class="box">
+        <div id="creditsDiv" class="boxDiv">
+          <header>Credits </header>
+          <mark>Author &nbsp;:</mark> <span>Mounier Florian <a href="http://paradoxxxzero.tk">[http://paradoxxx-zero.tk]</a> <span id="email"></span></span><br /><br />
+          <mark>Thanks :</mark> <span>Hyperman for its hyper support and its hyper spheres</span><br />
+          <span>Thomas Fuchs for its marvellous <a href="http://scripty2.com/">scripty2</a></span><br />
+          <span>The <a href="http://prototypejs.org/">prototype</a> team</span><br />
+          <span>And of course the <a href="http://reddit.com/">reddit</a> community</span><br />
+          <br />      <br />
+          <label>If you like what I do and want me to work more on stuff like that,  <br />
+            please contribute by donating a few beers :</label>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
+            <input type="hidden" name="cmd" value="_s-xclick"> 
+            <input type="hidden" name="hosted_button_id" value="10993088"> 
+            <input type="submit" name="submit" id="paypalsubmit" value="Donate" alt="Donate to anakata"> 
+          </form>
+        </div>
+      </aside>
+      <aside id="fps">
+      </aside>
+      <aside id="loadDiv">
+      </aside>
+      <aside id="loadOnlineDiv">
+      </aside>
+      <aside id="ego">
+      </aside>
+      <aside id="animLoad">
+        <div id="al1"  class="al"></div>
+        <div id="al2"  class="al"></div>
+        <div id="al3"  class="al"></div>
+        <div id="al4"  class="al"></div>
+        <div id="al5"  class="al"></div>
+        <div id="al6"  class="al"></div>
+        <div id="al7"  class="al"></div>
+        <div id="al8"  class="al"></div>
+        <div id="al9"  class="al"></div>
+        <div id="al10" class="al"></div>
+      </aside>
+    </section>
+  </body>
+</html>

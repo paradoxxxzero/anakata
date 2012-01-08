@@ -1,0 +1,112 @@
+/* -> Simple */ 
+.simple {
+   position: absolute;
+   background-color: #111;
+   border: 1px solid #222;
+   font-size: 0.75em;
+   width: 20em;
+   padding: 1em;
+}
+
+.simple header {
+   text-align: center;
+   width: 100%;
+   font-size: 1.25em;
+   color: #66f;
+}
+
+.simple .label-input {
+   clear: both;
+}
+
+.simple label {
+   float: left;
+   padding: 0.5em 0;
+}
+
+textarea {
+   height: 10em;
+   width: 18em;
+   text-align: left;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #0d0;
+   color: #0a0;
+   background-color: #000;
+   padding: 0.25em;
+   border-bottom-left-radius: 1em; -moz-border-radius-bottomleft: 1em; -webkit-border-bottom-left-radius: 1em;
+}
+.full-textarea {
+   height: 100%;
+   left: 0px;
+   position: absolute;
+   top: 0px;
+   width: 100%;
+   z-index: 9876;
+}
+.simple .label-div {
+   clear: both;
+}
+
+.simple .label-area {
+   position: relative;
+}
+.simple .edit {
+   font-size: 0.9em;
+   position: absolute;
+   right: 0px;
+   top: 0.75em;
+   cursor: pointer;
+}
+
+.simple .input-range {
+   width: 13em;
+   float: left;
+   text-align: left;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #0d0;
+   color: #0a0;
+   background-color: #000;
+   padding: 0.25em 0;
+   border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+
+.simple .input-text {
+   width: 50%;
+   float: right;
+   text-align: left;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #0d0;
+   color: #0a0;
+   background-color: #000;
+   margin-bottom: 1em;
+}
+
+.simple .range-value {
+   float: right;
+   width: 2em;
+   color: #aaf;
+   padding: 0.6em 0;
+   overflow: hidden;
+}
+
+.simple .kill {
+   color: #c00;
+   padding: 0.25em 0.45em;
+   position: absolute;
+   right: 0.5em;
+   top: 0.5em;
+   cursor: pointer;
+}
+.simple .kill:hover {
+   color: #f00;
+}
+#simple-misc-edit label, #simple-mesh-edit label {
+   width: 8em;
+}
+
+#simple-misc-edit .input-range {
+   width: 7em;
+}

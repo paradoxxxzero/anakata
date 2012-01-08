@@ -1,0 +1,35 @@
+@font-face {  
+   font-family: "monofur";
+   src: url( "./monofur.ttf" ) format("truetype");
+}  
+body {
+   background: #000;
+   color: #fff;
+   font-family: monofur;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+}
+mark {
+   background-color: transparent;
+}
+section {
+   overflow: hidden;
+}
+a {
+   color: #999;
+}
+a:hover {
+   color: #ccc;
+}
+a:active {
+   color: #fff;
+}
+a:visited {
+   color: #777;
+}
+
+
+#canvas {
+   z-index: 3;
+}

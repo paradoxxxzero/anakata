@@ -1,0 +1,56 @@
+/* -> Nav list */ 
+#listExpander {
+   position: absolute;
+   left: 0.5em;
+   top: 0.5em;
+   cursor: pointer;
+   padding: 0.5em;
+   margin: 0;
+   width: 3em;
+   border: 1px solid #555;
+}
+
+#listShrinker {
+   position: absolute;
+   left: 0.5em;
+   top: 0.5em;
+   cursor: pointer;
+   display: none;
+   padding: 0.5em;
+   margin: 0;
+   width: 3em;
+   border: 1px solid #555;
+}
+
+#navList {
+   list-style-type: none;
+   position: absolute;
+   left: -500px;
+   top: 10px;
+   font-size: 1.2em;
+   padding: 0 0.5em 0.75em;
+   margin: 0;
+   background-color: #111;
+   border: 1px solid #666;
+   border-bottom-right-radius: 2em; -moz-border-radius-bottomright: 2em; -webkit-border-bottom-right-radius: 2em;
+}
+
+.navListElement {
+   color: #888;
+   cursor: pointer;
+   padding: 0.2em 1.25em;
+   font-size: 0.75em;
+}
+
+.navListElement:hover {
+   color: #fff;
+   border-left: 2px solid #22f;
+   border-right: 2px solid #22f;
+   border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+   padding: 0.2em 1.15em;
+}
+
+.navListGroup {
+   font-size: 0.75em;
+   padding: 1em 0.5em 0;
+}
