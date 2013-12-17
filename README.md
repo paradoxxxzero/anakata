@@ -5,7 +5,7 @@ A fast 4d mesh drawer
 License
 =======
 
-Copyright (C) 2012-2010 Florian Mounier aka paradoxxxzero
+Copyright (C) 2013-2010 Florian Mounier aka paradoxxxzero
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
